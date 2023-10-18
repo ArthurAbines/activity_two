@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registration Form</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #cdcccc;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  .login-container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px 55px 40px 40px;
+    width: 350px;
+    text-align: center;
+    box-shadow: 0 0 15px 4px  #0000c7;
+  }
+  .login-container h2 {
+    margin-bottom: 15px; 
+    color: #333;
+  }
+  .input-group {
+    position: relative;
+    margin-bottom: 20px;
+  }
+  .input-group label {
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    color: #666;
+    background-color: white;
+    padding: 0 5px;
+    font-size: 12px;
+    pointer-events: none;
+    transition: all 0.3s ease;
+  }
+  .input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+  }
+  .input-group input:focus {
+    border-color: #3498db;
+  }
+  .input-group input:focus + label,
+  .input-group input:not(:placeholder-shown) + label {
+    top: -10px;
+    font-size: 12px;
+    color: #3498db;
+    background-color: white;
+    padding: 0 5px;
+  }
+  .login-btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+  }
+  .login-btn {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 24px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    box-shadow: 3px 3px 3px rgba(10, 0, 123, 0.934);
+  }
+  .login-btn:hover {
+    background-color: #2980b9;
+  }
+  .login-btn:active {
+    background-color: #2471a3;
+  }
+  .logintxt{
+    margin-bottom: 40px;
+  }
+  .all-status{
+	color: #fff;
+	border: 2px solid #0800ff;
+	border-radius: 10px;
+	padding: 5px;
+	margin: 10px;
+	padding: 8px;
+	text-align: center;
+}
+
+</style>
+</head>
+<body>
+  <div class="login-container">
+    <div class="logintxt">
+      <h2>Register</h2>
+    </div>
+    
+    <form onsubmit="saveToLocalStorage(event)">
+      <div class="input-group">
+        <input type="text" id="useername" name="useername" required>
+        <label for="useername">Username</label>
+      </div>
+      <div class="input-group">
+        <input type="text" id="email" name="email" required>
+        <label for="email">Email</label>
+      </div>
+      <div class="input-group">
+        <input type="password" id="password" name="password" required>
+        <label for="password">Password</label>
+      </div>
+      <div class="login-btn-container">
+        <button class="login-btn" type="submit">Submit</button>
+
+      </div>
+    </form>
+    
+  </div>
+  <script>
+    function saveToLocalStorage(event) {
+      event.preventDefault();  
+      
+      const username = document.getElementById('useername').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      
+      const RegisteredData = {
+        username: username,
+        email: email,
+        password: password
+      };
+      
+      localStorage.setItem('RegisteredData', JSON.stringify(RegisteredData));
+      
+      alert('Registration success and saved to local storage!');
+    }
+    </script>
+</body>
+</html>
